@@ -6,28 +6,16 @@ const mongoose = require('mongoose');
 // importing todoController
 const todoController = require('./controllers/todoController');
 
+app.use(express.json());
+
+app.post('/todo',todoController.addTodo);
+
+app.get ('/todo',todoController.getAllTodo);
+app.put('/todo',todoController.updateById);
+app.delete('/todo',todoController.deleteById);
 
 
-app.post('/todo', todoController.addTodo);
-
-app.post('/',(request,response)=>{
-response.send('hello this is a post response')
-}
-);
-app.put('/',(request,response)=>{
-    response.send('this is a put response')
-}
-);
-
-app.get('/todos',(request,response)=>{
-   response.send([{
-       'title':'Plan trip to Kumasi',
-       'description':'I will be going to kumasi this weekend',
-       'time':'Today',
-       'isCompleted': false
-   }]);    
-});
-// listening to request on localhost por 5010
+// listening to request on localhost port 5010
 app.listen(5010,() => {
     console.log("My server is Up and running ");
     // connecting to the database
