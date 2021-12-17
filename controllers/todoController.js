@@ -55,7 +55,7 @@ async function deleteById(request,response){
         await todoModel.findByIdAndDelete(request.params.todoId);
         response.status(200).json({message:"todo deleted"});
     } catch (error) {
-     console.log("something went wrong",error.message);   
+     console.log("something is wrong",error.message);   
     }
 
 }
